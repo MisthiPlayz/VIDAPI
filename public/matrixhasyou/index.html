@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIDAPI</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div id="notification-container"></div>
+
+<div id="confirm-overlay" class="confirm-overlay hidden">
+    <div class="confirm-box">
+        <p id="confirm-message"></p>
+        <div class="confirm-actions">
+            <button id="confirm-cancel">Cancel</button>
+            <button id="confirm-ok">Confirm</button>
+        </div>
+    </div>
+</div>
+
+<div id="bulk-add-overlay" class="confirm-overlay bulk-add-overlay hidden">
+    <div class="bulk-add-box">
+        <div class="bulk-add-header">
+            <span class="bulk-add-title">BULK</span>
+            <button id="bulk-add-row-btn" class="icon-btn" title="Add Row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+        </div>
+        <div class="bulk-table-wrapper">
+            <table class="bulk-table">
+                <tbody id="bulk-tbody"></tbody>
+            </table>
+        </div>
+        <div class="bulk-add-footer">
+            <button id="bulk-cancel-btn">Cancel</button>
+            <button id="bulk-submit-btn">Add</button>
+        </div>
+    </div>
+</div>
+
+<div id="login-screen" class="login-screen hidden">
+    <div class="login-box">
+        <h1>VIDAPI</h1>
+        <div class="login-fields">
+            <input type="text" id="login-username" placeholder="Username" autocomplete="off" spellcheck="false">
+            <input type="password" id="login-password" placeholder="Password" autocomplete="off">
+            <button id="login-btn">ENTER</button>
+        </div>
+    </div>
+</div>
+
+<main class="container hidden" id="main-panel">
+    <header>
+        <h1>VIDAPI</h1>
+        <button id="theme-toggle" class="icon-btn" title="Toggle theme" aria-label="Toggle dark mode">
+            <svg id="theme-icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg id="theme-icon-dark" class="hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+    </header>
+
+    <section class="panel">
+        <h2>Add Entry</h2>
+        <div class="input-group">
+            <input type="text" id="vidIdInput" placeholder="VID ID (Required)" autocomplete="off">
+            <input type="text" id="nameInput" placeholder="Name (Optional)" autocomplete="off">
+            <button id="executeBtn">ADD</button>
+            <button id="bulkAddBtn" class="secondary-btn">BULK</button>
+        </div>
+    </section>
+
+    <section class="panel">
+        <div class="panel-header">
+            <h2>DATA <span id="data-count"></span></h2>
+            <div class="panel-header-actions">
+                <button id="bulkDeleteBtn" class="bulk-delete-btn hidden">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+                    DELETE SELECTED
+                </button>
+                <button id="loadListBtn" class="icon-btn" title="Refresh list">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
+                </button>
+            </div>
+        </div>
+        <div class="table-wrapper">
+            <table id="dataTable">
+                <thead>
+                    <tr>
+                        <th class="check-col">
+                            <div class="custom-checkbox" id="selectAllCheckbox" data-checked="false">
+                                <div class="checkbox-inner"></div>
+                            </div>
+                        </th>
+                        <th>VID ID</th>
+                        <th>NAME</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+<script src="/admin-script.js"></script>
+</body>
+</html>
